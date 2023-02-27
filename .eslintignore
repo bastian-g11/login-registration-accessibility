@@ -1,0 +1,8 @@
+node_modules/*
+build/*
+dist/*
+src/__test__/*
+src/styles/*
+public/*
+src/main.jsx
+vite.config.js
