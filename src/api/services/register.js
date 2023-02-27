@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import axios from '@/api/axios';
+import axios from '@/api/apiClient';
 
 const REGISTER_URL = '/register';
 
