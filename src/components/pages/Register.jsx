@@ -6,11 +6,10 @@ import {
   faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from '@/api/axios';
+import registerService from '@/services/register';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register';
 
 const Register = () => {
   const userRef = useRef();
@@ -33,8 +32,6 @@ const Register = () => {
 
   useEffect(() => {
     userRef.current.focus();
-
-    return () => {};
   }, []);
 
   useEffect(() => {
@@ -61,24 +58,17 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ user, pwd }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-        }
+      const register = await registerService({ user, pwd });
+      console.log(
+        '🚀 ~ file: Register.jsx:62 ~ handleSubmit ~ register:',
+        register
       );
-      console.log(response?.data);
-      console.log(response?.accessToken);
-      console.log(JSON.stringify(response));
       setSuccess(true);
-      // clear state and controlled inputs
-      // need value attrib on inputs for this
       setUser('');
       setPwd('');
       setMatchPwd('');
     } catch (err) {
+      console.log('🚀 ~ file: Register.jsx:71 ~ handleSubmit ~ err:', err);
       if (!err?.response) {
         setErrMsg('No Server Response');
       } else if (err.response?.status === 409) {
