@@ -14,11 +14,10 @@ const axiosClient = axios.create({
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
 
 // We can also use interceptors https://axios-http.com/docs/interceptors
 // https://daily.dev/blog/a-guide-to-writing-clean-api-calls-using-axios
 
-export default {
-  axiosClient,
-};
+export default axiosClient;

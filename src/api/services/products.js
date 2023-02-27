@@ -1,4 +1,4 @@
-import { axiosClient } from '@/api/services/apiClient';
+import axiosClient from '@/api/apiClient';
 
 const PRODUCTS_URL = '/register';
 

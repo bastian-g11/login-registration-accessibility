@@ -1,9 +1,11 @@
-import Register from '@/components/pages/Register';
+// import Register from '@/components/pages/Register';
+import Login from '@/components/pages/Login';
 
 function App() {
   return (
     <main className='App'>
-      <Register />
+      {/* <Register /> */}
+      <Login />
     </main>
   );
 }
