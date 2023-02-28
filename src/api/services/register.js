@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
-import axiosClient from '@/api/apiClient';
+import apiClient from '@/api/apiClient';
 
 const REGISTER_URL = '/register';
 
 // Services should be used without react!
 
 const register = ({ user, pwd }) => {
-  const response = axiosClient.post(
+  const response = apiClient.post(
     REGISTER_URL,
     // Here we're passing what our backend is expecting (names)
     JSON.stringify({ user, pwd })

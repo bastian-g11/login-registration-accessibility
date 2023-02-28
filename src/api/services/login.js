@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
-import axiosClient from '@/api/apiClient';
+import apiClient from '@/api/apiClient';
 
 const LOGIN_URL = '/login';
 
 const login = ({ user, pwd }) => {
-  const response = axiosClient.post(LOGIN_URL, JSON.stringify({ user, pwd }));
+  const response = apiClient.post(LOGIN_URL, JSON.stringify({ user, pwd }));
   return response;
 };
 
