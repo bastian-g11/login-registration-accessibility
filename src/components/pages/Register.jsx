@@ -6,8 +6,8 @@ import {
   faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import registerService from '@/api/services/register';
-import { USER_REGEX, PWD_REGEX } from '@/utils/Constants';
+import registerService from '../../api/services/register';
+import { USER_REGEX, PWD_REGEX } from '../../utils/Constants';
 
 const Register = () => {
   const userRef = useRef();

@@ -1,4 +1,4 @@
-import apiClient from '@/api/apiClient';
+import apiClient from '../apiClient';
 
 const PRODUCTS_URL = '/register';
 

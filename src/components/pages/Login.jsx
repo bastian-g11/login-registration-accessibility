@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import { useRef, useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import loginService from '@/api/services/login';
-import useAuth from '@/hooks/useAuth';
+import loginService from '../../api/services/login';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
   const { setAuth } = useAuth();
@@ -65,7 +65,7 @@ const Login = () => {
       >
         {errMsg}
       </p>
-      <h1>Sign In</h1>
+      <h1>Sign InASDADAS</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor='username'>
           Username:

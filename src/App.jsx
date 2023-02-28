@@ -1,15 +1,15 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Routes, Route } from 'react-router-dom';
-import Layout from '@/components/Layout';
-import Home from '@/components/pages/Home';
-import Admin from '@/components/pages/Admin';
-import Register from '@/components/pages/Register';
-import Login from '@/components/pages/Login';
-import LinkPage from '@/components/pages/LinkPage';
-import Unauthorized from '@/components/pages/Unauthorized';
-import Missing from '@/components/pages/Missing';
-import RequireAuth from '@/components/RequireAuth';
-import { ROLES } from '@/utils/Constants';
+import Layout from './components/Layout';
+import Home from './components/pages/Home';
+import Admin from './components/pages/Admin';
+import Register from './components/pages/Register';
+import Login from './components/pages/Login';
+import LinkPage from './components/pages/LinkPage';
+import Unauthorized from './components/pages/Unauthorized';
+import Missing from './components/pages/Missing';
+import RequireAuth from './components/RequireAuth';
+import { ROLES } from './utils/Constants';
 
 function App() {
   return (

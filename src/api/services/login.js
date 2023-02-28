@@ -1,5 +1,4 @@
-/* eslint-disable no-console */
-import apiClient from '@/api/apiClient';
+import apiClient from '../apiClient';
 
 const LOGIN_URL = '/login';
 

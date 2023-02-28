@@ -13,22 +13,6 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    "import/extensions": [
-      0,
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
-    "no-restricted-imports": [
-      "error",
-      {
-        "patterns": [".*"]
-      }
-    ],
     "prefer-destructuring": "warn",
     "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".js"] }],
     "react/prop-types": "off",
