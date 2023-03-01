@@ -36,7 +36,7 @@ const Login = () => {
       // setAuth({ user, pwd, roles, accessToken });
 
       // XXX: To emulate a successful login
-      setAuth({ user, pwd, roles: ['ADMIN'], accessToken: '4444' });
+      setAuth({ user, pwd, roles: ['REGULAR'], accessToken: '4444' });
 
       setUser('');
       setPwd('');

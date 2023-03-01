@@ -9,6 +9,7 @@ import LinkPage from './components/pages/LinkPage';
 import Unauthorized from './components/pages/Unauthorized';
 import Missing from './components/pages/Missing';
 import RequireAuth from './components/RequireAuth';
+import PersistLogin from './components/pages/PersistLogin';
 import { ROLES } from './utils/Constants';
 
 function App() {
@@ -22,15 +23,17 @@ function App() {
         <Route path='unauthorized' element={<Unauthorized />} />
 
         {/* Protected routes */}
-        <Route element={<RequireAuth allowedRoles={[ROLES.user]} />}>
-          <Route path='/' element={<Home />} />
-        </Route>
+        <Route element={<PersistLogin />}>
+          <Route element={<RequireAuth allowedRoles={[ROLES.user]} />}>
+            <Route path='/' element={<Home />} />
+          </Route>
 
-        <Route element={<RequireAuth allowedRoles={[ROLES.admin]} />}>
-          <Route path='admin' element={<Admin />} />
+          <Route element={<RequireAuth allowedRoles={[ROLES.admin]} />}>
+            <Route path='admin' element={<Admin />} />
+          </Route>
+          {/* Catch all */}
+          <Route path='*' element={<Missing />} />
         </Route>
-        {/* Catch all */}
-        <Route path='*' element={<Missing />} />
       </Route>
     </Routes>
   );
