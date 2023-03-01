@@ -3,9 +3,11 @@ import { useRef, useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import loginService from '../../api/services/login';
 import useAuth from '../../hooks/useAuth';
+import useInput from '../../hooks/useInput';
+import useToggle from '../../hooks/useToggle';
 
 const Login = () => {
-  const { setAuth, persist, setPersist } = useAuth();
+  const { setAuth } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   // This is used to get where the user wanted to go before being redirected to the login page
@@ -14,9 +16,10 @@ const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
 
-  const [user, setUser] = useState('');
+  const [user, resetUser, userAttributes] = useInput('user', '');
   const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
+  const [check, toggleCheck] = useToggle('persist', false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -38,7 +41,8 @@ const Login = () => {
       // XXX: To emulate a successful login
       setAuth({ user, pwd, roles: ['REGULAR'], accessToken: '4444' });
 
-      setUser('');
+      // setUser('');
+      resetUser();
       setPwd('');
       navigate(from, { replace: true });
     } catch (err) {
@@ -55,14 +59,6 @@ const Login = () => {
       errRef.current.focus();
     }
   };
-
-  const togglePersist = () => {
-    setPersist((prevState) => !prevState);
-  };
-
-  useEffect(() => {
-    localStorage.setItem('persist', persist);
-  }, [persist]);
 
   return (
     <section>
@@ -82,8 +78,7 @@ const Login = () => {
             id='username'
             ref={userRef}
             autoComplete='off'
-            onChange={(e) => setUser(e.target.value)}
-            value={user}
+            {...userAttributes}
             required
           />
         </label>
@@ -105,8 +100,8 @@ const Login = () => {
               type='checkbox'
               name='persist'
               id='persist'
-              onClick={togglePersist}
-              checked={persist}
+              onClick={toggleCheck}
+              checked={check}
             />
             Trust this device
           </label>

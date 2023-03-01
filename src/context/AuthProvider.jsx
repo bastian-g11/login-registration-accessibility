@@ -4,9 +4,6 @@ const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
-  const [persist, setPersist] = useState(
-    JSON.parse(localStorage.getItem('persist')) || false
-  );
 
   /** If your component renders the same result given the same props,
    * you can wrap it in a call to React.memo for a performance boost
@@ -18,10 +15,8 @@ export const AuthProvider = ({ children }) => {
     () => ({
       auth,
       setAuth,
-      persist,
-      setPersist,
     }),
-    [auth, persist]
+    [auth]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
