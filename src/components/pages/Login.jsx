@@ -36,10 +36,11 @@ const Login = () => {
 
       // const accessToken = response?.data?.accessToken;
       // const roles = response?.data?.roles;
-      // setAuth({ user, pwd, roles, accessToken });
+      // setAuth({ user, roles, accessToken });
 
       // XXX: To emulate a successful login
-      setAuth({ user, pwd, roles: ['REGULAR'], accessToken: '4444' });
+      // XXX: The roles should be sent in the access token
+      setAuth({ user, accessToken: '4444' });
 
       // setUser('');
       resetUser();

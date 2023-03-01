@@ -27,7 +27,9 @@ const Users = () => {
           '🚀 ~ file: Users.jsx:18 ~ getUsers ~ response:',
           response?.data
         );
-        if (isMounted) setUsers(response.data);
+
+        const userNames = response.data.map((user) => user.username);
+        if (isMounted) setUsers(userNames);
       } catch (err) {
         console.log('🚀 ~ file: Users.jsx:24 ~ getUsers ~ err:', err);
         // With this, if they are redirected to the login from the admin page(let's say)
@@ -49,7 +51,7 @@ const Users = () => {
       {users?.length ? (
         <ul>
           {users.map((user) => (
-            <li key={user.id}>{user?.name}</li>
+            <li key={user.id}>{user}</li>
           ))}
         </ul>
       ) : (
