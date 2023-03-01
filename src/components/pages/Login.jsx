@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 import { useRef, useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import loginService from '../../api/services/login';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-  const { setAuth } = useAuth();
+  const { setAuth, persist, setPersist } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   // This is used to get where the user wanted to go before being redirected to the login page
@@ -56,6 +56,14 @@ const Login = () => {
     }
   };
 
+  const togglePersist = () => {
+    setPersist((prevState) => !prevState);
+  };
+
+  useEffect(() => {
+    localStorage.setItem('persist', persist);
+  }, [persist]);
+
   return (
     <section>
       <p
@@ -91,6 +99,18 @@ const Login = () => {
         </label>
 
         <button type='submit'>Sign In</button>
+        <div className='persistCheck'>
+          <label htmlFor='persist'>
+            <input
+              type='checkbox'
+              name='persist'
+              id='persist'
+              onClick={togglePersist}
+              checked={persist}
+            />
+            Trust this device
+          </label>
+        </div>
       </form>
 
       <p>
